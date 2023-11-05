@@ -1,7 +1,9 @@
 <template>
     <div>
         <h1>{{ title }}</h1>
+        <slot name="sHeader"></slot>
         <p>{{ name }}</p>
+        <slot :sTitle="slotMsg"></slot>
         <button @click="updateName">Change Name</button>
     </div>    
 </template>
@@ -16,7 +18,8 @@ export default {
     },
     data(){
         return {
-            name: 'hello world'
+            name: 'hello world',
+            slotMsg: 'this is slot message'
         }
     },
     methods: {
