@@ -1,49 +1,46 @@
 <template>
   <div id="app" class="container">
     <h1 class="text-center">Todo App</h1>
-    <input 
-      v-model="todoText"
-      type="text" 
-      class="w-100 p-2" 
-      placeholder="Type todo"
-      @keyup.enter="addItem"
-    >
+    <CompletedTodo />
+    <AddTodo 
+        @add-todo="addItem"></AddTodo>
     <hr>
-    <TodoComp 
-        v-for="todo in todos" 
-        :key="todo.id"
-        :todoPs="todo"
+    <TodoList 
         @toggle-checkbox="toggleCheckbox"
         @click-delete="deleteTodo"
-    />
+      ></TodoList>
   </div>
 </template>
 
 <script>
-import TodoComp from '@/components/TodoComp.vue';
+import TodoList from '@/components/TodoList.vue';
+import AddTodo from './components/AddTodo.vue';
+import CompletedTodo from '@/components/CompletedTodo.vue';
 
 export default {
   components: {
-    TodoComp
+    TodoList,
+    AddTodo,
+    CompletedTodo
   },
   data(){
     return {
       todoText:'',
-      todos: [
-        {id:1, text:'buy a car', checked:false},
-        {id:2, text:'play game', checked:false},
-      ]
+      // Vuex 사용으로 store 로 이동
+      // todos: [
+      //   {id:1, text:'buy a car', checked:false},
+      //   {id:2, text:'play game', checked:false},
+      // ]
     }
   },
   methods: {
-    addItem(e){
-      console.log(e.target.value);
+    addItem(vaule){
       this.todos.push({
         id: Math.random(),
-        text: e.target.value,
+        text: vaule,
         checked: false
       });
-      this.todoText = '';
+
     },
     toggleCheckbox({id, checked}){
       //console.log(id, checked);
