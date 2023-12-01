@@ -26,13 +26,20 @@ export default {
     },
     methods:{
         toggleCheckbox(e){
-            this.$emit('toggle-checkbox',{
-                id: this.todoPs.id,
-                checked: e.target.checked
-            })
+            // vuex 사용으로 주석처리
+            // this.$emit('toggle-checkbox',{
+            //     id: this.todoPs.id,
+            //     checked: e.target.checked
+            // });
+            this.$store.commit('TOGGLE_TODO',{
+               id: this.todoPs.id,
+               checked: e.target.checked
+            });
         },
         clickDelete(){
-            this.$emit('click-delete', this.todoPs.id);
+            // vuex 사용으로 주석처리
+            // this.$emit('click-delete', this.todoPs.id);
+            this.$store.commit('DELETE_TODO', this.todoPs.id);
         }
     }
 }

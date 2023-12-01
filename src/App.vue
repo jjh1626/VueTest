@@ -2,13 +2,9 @@
   <div id="app" class="container">
     <h1 class="text-center">Todo App</h1>
     <CompletedTodo />
-    <AddTodo 
-        @add-todo="addItem"></AddTodo>
+    <AddTodo />
     <hr>
-    <TodoList 
-        @toggle-checkbox="toggleCheckbox"
-        @click-delete="deleteTodo"
-      ></TodoList>
+    <TodoList />
   </div>
 </template>
 
@@ -34,30 +30,29 @@ export default {
     }
   },
   methods: {
-    addItem(vaule){
-      this.todos.push({
-        id: Math.random(),
-        text: vaule,
-        checked: false
-      });
-
-    },
-    toggleCheckbox({id, checked}){
-      //console.log(id, checked);
-      const index = this.todos.findIndex(todo => {
-        return todo.id === id;
-      });
-      this.todos[index].checked = checked;
-    },
-    deleteTodo(id){
-      /* splice 사용한 방법
-      const index = this.todos.findIndex(todo => {
-        return todo.id === id;
-      });
-      this.todos.splice(index,1); */
-      // filter 사용한 방법
-      this.todos = this.todos.filter(todo => todo.id !== id);
-    }
+    // addItem(vaule){
+    //   this.todos.push({
+    //     id: Math.random(),
+    //     text: vaule,
+    //     checked: false
+    //   });
+    // },
+    // toggleCheckbox({id, checked}){
+    //   //console.log(id, checked);
+    //   const index = this.todos.findIndex(todo => {
+    //     return todo.id === id;
+    //   });
+    //   this.todos[index].checked = checked;
+    // },
+    // deleteTodo(id){
+    //   /* splice 사용한 방법
+    //   const index = this.todos.findIndex(todo => {
+    //     return todo.id === id;
+    //   });
+    //   this.todos.splice(index,1); */
+    //   // filter 사용한 방법
+    //   this.todos = this.todos.filter(todo => todo.id !== id);
+    // }
   }
 }
 </script>

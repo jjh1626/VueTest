@@ -17,7 +17,8 @@ export default {
     },
     methods: {
         addItem(e){
-            this.$emit('add-todo', e.target.value);
+            //this.$emit('add-todo', e.target.value);   //vuex 사용으로 주석처리
+            this.$store.commit('ADD_TODO', e.target.value);
             this.todoText = '';
         }
     }

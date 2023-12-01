@@ -4,8 +4,6 @@
         v-for="todo in todos" 
         :key="todo.id"
         :todoPs="todo"
-        @toggle-checkbox="toggleCheckbox"
-        @click-delete="deleteTodo"
     />
   </div>
 
@@ -23,12 +21,13 @@ export default {
         }
     },
     methods:{
-        toggleCheckbox(value){
-            this.$emit('toggle-checkbox',value);
-        },
-        deleteTodo(todoId){
-            this.$emit('click-delete',todoId);
-        }
+        // vuex 사용으로 주석처리
+        // toggleCheckbox(value){
+        //     this.$emit('toggle-checkbox',value);
+        // },
+        // deleteTodo(todoId){
+        //     this.$emit('click-delete',todoId);
+        // }
     }
 }
 </script>
