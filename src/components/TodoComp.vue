@@ -26,20 +26,29 @@ export default {
     },
     methods:{
         toggleCheckbox(e){
-            // vuex 사용으로 주석처리
+            /* vuex 사용으로 주석처리 */
             // this.$emit('toggle-checkbox',{
             //     id: this.todoPs.id,
             //     checked: e.target.checked
             // });
-            this.$store.commit('TOGGLE_TODO',{
-               id: this.todoPs.id,
-               checked: e.target.checked
+
+            /* mutations 호출 */
+            // this.$store.commit('TOGGLE_TODO',{
+            //    id: this.todoPs.id,
+            //    checked: e.target.checked
+            // });
+            
+            /* actions 호출 */
+            this.$store.dispatch('todo/toggleTodo',{
+                id: this.todoPs.id,
+                checked: e.target.checked
             });
         },
         clickDelete(){
             // vuex 사용으로 주석처리
             // this.$emit('click-delete', this.todoPs.id);
-            this.$store.commit('DELETE_TODO', this.todoPs.id);
+            // this.$store.commit('DELETE_TODO', this.todoPs.id);
+            this.$store.dispatch('todo/deleteTodo', this.todoPs.id);
         }
     }
 }
